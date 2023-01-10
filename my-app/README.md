@@ -1,1 +1,1 @@
-![example workflow]https://github.com/ttonini/testing-deploy/actions/runs/3887836635/workflow/azure-staticwebapp.yml/badge.svg
+![example workflow](https://github.com/ttonini/testing-deploy/actions/runs/3887836635/workflow/azure-staticwebapp.yml/badge.svg)
