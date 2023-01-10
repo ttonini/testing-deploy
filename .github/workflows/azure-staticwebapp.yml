@@ -13,7 +13,7 @@ jobs:
       test_url: ${{ format('https://google.com{0}','/maps') }}
     environment:
       name: 'blooblah'
-      url: $test_url
+      url: ${{ test_url }}
     steps:
       - name: deploy
         id: deploy-google
