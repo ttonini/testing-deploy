@@ -9,9 +9,11 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     concurrency: production
+    env:
+      test_url: ${{ format('https://google.com{0}','/maps') }}
     environment:
       name: 'blooblah'
-      url: format('https://google.com{0}','/maps')
+      url: $test_url
     steps:
       - name: deploy
         id: deploy-google
