@@ -11,7 +11,7 @@ jobs:
     concurrency: production
     environment:
       name: 'production'
-      url: 'google.com'
+      url: https://google.com
     steps:
       - name: deploy
         id: deploy-google
