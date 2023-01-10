@@ -15,4 +15,4 @@ jobs:
     steps:
       - name: deploy
         id: deploy-google
-        run: npm run build
+        run: npm
