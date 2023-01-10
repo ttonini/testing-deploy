@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: production
     environment:
-      name: 'blooblah'
+      name: 'testing deploy'
       url: ${{ format('https://google.com{0}','/maps') }}
     steps:
       - name: deploy
