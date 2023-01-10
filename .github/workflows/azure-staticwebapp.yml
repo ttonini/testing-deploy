@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: production
     environment:
-      name: 'production'
+      name: 'blooblah'
       url: https://google.com
     steps:
       - name: deploy
