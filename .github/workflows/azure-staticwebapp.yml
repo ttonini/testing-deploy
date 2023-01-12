@@ -7,13 +7,22 @@ on:
       - tst
 
 jobs:
+  set_environment:
+    outputs:
+      my_env: ${{ steps.setenv.outputs.sha }}
+    runs-on: ubuntu-latest
+    steps:
+    - id: setenv
+      run: echo "sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
+
+
   deployment:
     runs-on: ubuntu-latest
     concurrency: production
     env:
       test: test
-    environment:
-      name: ${{ format('https://google.com{0}','/maps') }}
+    environment: 
+      name: ${{ needs.set_environment.outputs.sha }}
       url: ${{ format('https://google.com{0}','/maps') }}
     steps:
       - name: deploy
