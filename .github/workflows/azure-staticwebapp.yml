@@ -10,6 +10,11 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     concurrency: production
+    env:
+      test: test
+    environment:
+      name: ${{ var.test }}
+      url: ${{ format('https://google.com{0}','/maps') }}
     steps:
       - name: deploy
         id: deploy-google
@@ -17,7 +22,4 @@ jobs:
           echo "hello world"
           echo "setting release identifier to ${GITHUB_SHA:0:8}"
           echo "sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
-          
-    environment:
-      name: ${{ steps.deploy.outputs.sha }}
-      url: ${{ format('https://google.com{0}','/maps') }}
+
