@@ -4,15 +4,28 @@ on:
   push:
     branches:
       - main
+      - tst
 
 jobs:
-  deployment:
+  set_environment:
+    outputs:
+      my_env: ${{ steps.setenv.outputs.sha }}
     runs-on: ubuntu-latest
-    concurrency: production
-    environment:
-      name: 'testing'
-      url: ${{ format('https://google.com{0}','/maps') }}
+    steps:
+    - id: setenv
+      run: echo "sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
+
+  deployment:
+    needs: set_environment
+    runs-on: ubuntu-latest
+    environment: 
+      name: ${{ needs.set_environment.outputs.sha }}
+      url: ${{ format('https://google.com{0}','/maps/123') }}
     steps:
       - name: deploy
         id: deploy-google
-        run: echo "hello world"
+        run: |
+          echo "hello world"
+          echo "setting release identifier to ${GITHUB_SHA:0:8}"
+          echo "sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
+
