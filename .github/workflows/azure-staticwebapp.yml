@@ -13,7 +13,7 @@ jobs:
     env:
       test: test
     environment:
-      name: ${{ var.test }}
+      name: ${{ GITHUB_SHA }}
       url: ${{ format('https://google.com{0}','/maps') }}
     steps:
       - name: deploy
