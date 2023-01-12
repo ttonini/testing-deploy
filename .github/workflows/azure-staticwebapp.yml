@@ -17,13 +17,14 @@ jobs:
 
 
   deployment:
+    needs: set_environment
     runs-on: ubuntu-latest
     concurrency: production
     env:
       test: test
     environment: 
       name: ${{ needs.set_environment.outputs.sha }}
-      url: ${{ format('https://google.com{0}','/maps') }}
+      url: ${{ format('https://google.com{0}','/maps/123') }}
     steps:
       - name: deploy
         id: deploy-google
