@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: production
     environment:
-      name: 'testing1'
+      name: '${GITHUB_SHA:0:8}'
       url: ${{ format('https://google.com{0}','/maps') }}
     steps:
       - name: deploy
