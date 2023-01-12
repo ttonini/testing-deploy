@@ -10,8 +10,10 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     concurrency: production
+    env:
+        SHA: ${GITHUB_SHA:0:8}
     environment:
-      name: ${{ GITHUB_SHA:0:8 }}
+      name: $SHA
       url: ${{ format('https://google.com{0}','/maps') }}
     steps:
       - name: deploy
