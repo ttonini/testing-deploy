@@ -32,5 +32,4 @@ jobs:
           echo "hello world"
           echo "setting release identifier to ${GITHUB_SHA:0:8}"
           echo "sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
-          echo "${{needs.set_environment.outputs.sha}}"
 
