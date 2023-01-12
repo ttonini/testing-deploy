@@ -11,11 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: production
     env:
-        SHA: ${GITHUB_SHA:0:8}
+        SHA: $GITHUB_SHA:0:8
+      
     environment:
       name: $SHA
       url: ${{ format('https://google.com{0}','/maps') }}
     steps:
       - name: deploy
         id: deploy-google
-        run: echo "hello world"
+        run: |
+          echo "hello world"
+          echo "setting release identifier to ${GITHUB_SHA:0:8}"
+          echo "setting release identifier to ${SHA}"
