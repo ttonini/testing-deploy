@@ -13,17 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - id: setenv
-      # run: echo "sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
-      run: echo "::set-output name=sha::${GITHUB_SHA:0:8}"
+      run: echo "sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
 
   deployment:
     needs: set_environment
     runs-on: ubuntu-latest
-    concurrency: production
-    env:
-      test: test
     environment: 
-      name: ${ needs.set_environment.outputs.sha }
+      name: ${{ needs.set_environment.outputs.sha }}
       url: ${{ format('https://google.com{0}','/maps/123') }}
     steps:
       - name: deploy
