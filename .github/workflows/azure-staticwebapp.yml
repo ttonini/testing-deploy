@@ -13,7 +13,7 @@ jobs:
     env:
       test: test
     environment:
-      name: ${{ steps.deploy-google.outputs.sha}}
+      name: ${{ format('https://google.com{0}','/maps') }}
       url: ${{ format('https://google.com{0}','/maps') }}
     steps:
       - name: deploy
