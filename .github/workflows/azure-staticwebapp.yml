@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - id: setenv
-      run: echo "sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
-
+      # run: echo "sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
+      run: echo "::set-output name=my_env::${GITHUB_SHA:0:8}"
 
   deployment:
     needs: set_environment
